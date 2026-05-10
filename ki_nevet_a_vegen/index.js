@@ -1,36 +1,49 @@
 const box = document.getElementById("box");
 const time = document.getElementById("time");
+const leaderboard = document.getElementById("leaderboard");
+
+let startTime = 0;
+let count = 0;
 
 const roundEnd = (condition) => {
-    if(condition === "win"){
+    if (condition === "win") {
         box.style.backgroundColor = "orange";
-    }else{
-
+    } else {
+        box.style.backgroundColor = "red";
+        time.innerHTML = "Túl korai!";
     }
-}
+};
 
 const startRound = () => {
     box.style.backgroundColor = "red";
     time.innerHTML = "";
 
-    changeTime = (Math.random() * 6) + 2;
-    console.log(changeTime);
+    let changeTime = (Math.random() * 4) + 2;
 
     setTimeout(() => {
         box.style.backgroundColor = "green";
+        startTime = Date.now();
     }, changeTime * 1000);
-}
+};
 
 box.onclick = () => {
-    if(box.style.backgroundColor === "green"){
+    if (box.style.backgroundColor === "green") {
+        let reaction = Date.now() - startTime;
+
+        time.innerHTML = reaction + " ms";
+
+        count++;
+
+        const row = leaderboard.insertRow();
+        row.insertCell(0).innerHTML = count;
+        row.insertCell(1).innerHTML = reaction;
+
         roundEnd("win");
-    }else{
+    } else {
         roundEnd("lose");
     }
-}
+};
 
 box.onmouseover = () => {
-    box.style.backgroundColor = "red";
-    time.innerHTML = 0;
     startRound();
-}
+};
