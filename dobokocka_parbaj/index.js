@@ -59,20 +59,29 @@ d2 = new Dobokocka("cube-right");
 d2.changeValue(2);
 d2.displaySelf();
 
+interval = null;
+
 document.getElementById("roll-button").onclick = () => {
+    if(interval !== null){
+        clearInterval(interval)
+    }
+
+    document.getElementById("result").innerHTML = "";
+
     d1 = new Dobokocka("cube-left");
     d2 = new Dobokocka("cube-right");
 
     i = 0;
 
-    setInterval(() => {
+    interval = setInterval(() => {
         if (i != 10) {
             rollAndDisplayCubes(d1, d2);
             i++;
         }
         else{
+            clearInterval(interval);
             displayResult(getLargerCube(d1, d2));
         }
         
-    }, 400);    
+    }, 100);    
 }
