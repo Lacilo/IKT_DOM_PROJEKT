@@ -2,8 +2,8 @@ const box = document.getElementById("box");
 const time = document.getElementById("time");
 const leaderboard = document.getElementById("leaderboard");
 
-let startTime = 0;
-let count = 0;
+startTime = 0;
+count = 0;
 
 const roundEnd = (condition) => {
     if (condition === "win") {
@@ -18,7 +18,7 @@ const startRound = () => {
     box.style.backgroundColor = "red";
     time.innerHTML = "";
 
-    let changeTime = (Math.random() * 4) + 2;
+    changeTime = (Math.random() * 4) + 2;
 
     setTimeout(() => {
         box.style.backgroundColor = "green";
@@ -28,7 +28,7 @@ const startRound = () => {
 
 box.onclick = () => {
     if (box.style.backgroundColor === "green") {
-        let reaction = Date.now() - startTime;
+        reaction = Date.now() - startTime;
 
         time.innerHTML = reaction + " ms";
 
