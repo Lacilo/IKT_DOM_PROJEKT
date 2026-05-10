@@ -30,17 +30,20 @@ const getLargerCube = (c1, c2) => {
 }
 
 const displayResult = (winnerCube) => {
-    if(winnerCube != null) {
-        if(winnerCube.imgId == "cube-left"){
-                document.getElementById("result").innerHTML = "A bal kocka nyert!";
-            }
-            else if(winnerCube.imgId == "cube-right"){
-                document.getElementById("result").innerHTML = "A jobb kocka nyert!";
-            }
+    let resultText = "";
+
+    if (winnerCube != null) {
+        if (winnerCube.imgId == "cube-left") {
+            resultText = `Bal nyert: ${d1.value} vs ${d2.value}`;
+        } else {
+            resultText = `Jobb nyert: ${d1.value} vs ${d2.value}`;
+        }
+    } else {
+        resultText = `Döntetlen: ${d1.value} vs ${d2.value}`;
     }
-    else{
-        document.getElementById("result").innerHTML = "Döntetlen!";
-    }
+
+    document.getElementById("result").innerHTML = resultText;
+    addLog(resultText);
 }
 
 const rollAndDisplayCubes = (c1, c2) => {
@@ -50,6 +53,12 @@ const rollAndDisplayCubes = (c1, c2) => {
     c2.changeValue();
     c2.displaySelf();
 }
+
+const addLog = (text) => {
+    document.getElementById("log").innerHTML += text + "<br>";
+};
+
+tortenet = [];
 
 d1 = new Dobokocka("cube-left");
 d1.changeValue(1);
