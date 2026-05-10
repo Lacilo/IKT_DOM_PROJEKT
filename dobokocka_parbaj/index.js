@@ -63,7 +63,7 @@ interval = null;
 
 document.getElementById("roll-button").onclick = () => {
     if(interval !== null){
-        clearInterval(interval)
+        clearInterval(interval);
     }
 
     document.getElementById("result").innerHTML = "";
