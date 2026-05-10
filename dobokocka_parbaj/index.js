@@ -1,6 +1,7 @@
 class Dobokocka {
-    constructor(value = 0) {
+    constructor(imgId, value = 0) {
         this.value = value;
+        this.imgId = imgId;
     }
 
     chageValue = (newValue = 0) => {
@@ -19,4 +20,3 @@ const getLargerCube = (c1, c2) => {
         return null;
     }
 }
-
