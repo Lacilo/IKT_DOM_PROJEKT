@@ -27,7 +27,7 @@ h1 {
     height: 200px;
     margin: 0 auto;
 
-    background: red;
+    background: rgb(255, 123, 0);
     border-radius: 12px;
 
     cursor: pointer;
